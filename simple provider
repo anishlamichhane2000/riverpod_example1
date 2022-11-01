@@ -1,0 +1,29 @@
+// ignore_for_file: prefer_const_constructors, unused_local_variable
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final Numberprovider = Provider<int>((ref) => 12);
+
+// this provider is so simplied you cannot change it but you
+//can initilize the given value
+
+class ProviderPage extends StatelessWidget {
+  const ProviderPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Provider"),
+      ),
+      body: Center(
+        child: Consumer(builder: ((context, ref, child) {
+          final number = ref.watch(Numberprovider).toString();
+
+          return Text(number);
+        })),
+      ),
+    );
+  }
+}
